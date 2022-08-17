@@ -32,9 +32,12 @@ import { Map } from "./components/Map";
 import { UserContext } from "./contexts/UserContext";
 import { auth, db } from "./services/firebase";
 import * as braze from "@braze/web-sdk";
+import { link } from "fs/promises";
+import { Navigate, useNavigate } from "react-router-dom";
 
-braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", { baseUrl: "sdk.iad-06.braze.com" ,
-enableLogging: true
+braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
+    baseUrl: "sdk.iad-06.braze.com",
+    enableLogging: true
 });
 braze.automaticallyShowInAppMessages();
 
@@ -54,6 +57,7 @@ function App() {
             .then((res) => res.json())
             .then((data) => setUsd(data.blue.value_avg));
     }, []);
+
     return (
         <div className="pb-48">
             <PageHeader
@@ -68,13 +72,13 @@ function App() {
                 Faltan sólo...
             </Typography.Title>
             <Button
-                            onClick={() => {
-                                setTest(test + 100)
-                                console.log(test);
-                            }}
-                            type="primary"
-                            className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
-                        >Tester click</Button>
+                onClick={() => {
+                    setTest(test + 100)
+                    console.log(test)
+                }}
+                type="primary"
+                className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
+            >Tester click</Button>
             <Clock />
 
             <Map />
@@ -139,7 +143,7 @@ function App() {
                                                     ) => {
                                                         return moment(
                                                             pago.fecha.seconds *
-                                                                1000
+                                                            1000
                                                         ).format("DD/MM/yyyy");
                                                     }}
                                                 />
