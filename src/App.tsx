@@ -46,6 +46,8 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [showData, setShowData] = useState(false);
     const [usd, setUsd] = useState(200);
+    const [test, setTest] = useState(100);
+
     useEffect(() => {
         braze.logCustomEvent("Testeo");
         fetch(`https://api.bluelytics.com.ar/v2/latest`)
@@ -65,6 +67,13 @@ function App() {
             <Typography.Title level={3} className="m-4 mb-0">
                 Faltan sólo...
             </Typography.Title>
+            <Button
+                            onClick={() => {
+                                setTest(250);
+                            }}
+                            type="primary"
+                            className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
+                        >Tester click</Button>
             <Clock />
 
             <Map />
