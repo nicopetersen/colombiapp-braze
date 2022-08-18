@@ -42,7 +42,7 @@ braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
 braze.openSession()
 braze.automaticallyShowInAppMessages();
 braze.logCustomEvent("Testeo")
-braze.logCustomEvent("Traffic Source")
+
 
 function App() {
     const { user, setUser } = useContext(UserContext);
