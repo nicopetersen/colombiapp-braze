@@ -41,8 +41,8 @@ braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
 });
 braze.openSession()
 braze.automaticallyShowInAppMessages();
-braze.logCustomEvent("Testeo");
-
+braze.logCustomEvent("Testeo")
+braze.logCustomEvent("Traffic Source")
 
 function App() {
     const { user, setUser } = useContext(UserContext);
@@ -51,6 +51,7 @@ function App() {
     const [showData, setShowData] = useState(false);
     const [usd, setUsd] = useState(200);
     const [test, setTest] = useState(100);
+  
 
     useEffect(() => {
         fetch(`https://api.bluelytics.com.ar/v2/latest`)
