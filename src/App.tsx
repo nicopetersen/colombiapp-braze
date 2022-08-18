@@ -39,9 +39,10 @@ braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
     baseUrl: "sdk.iad-06.braze.com",
     enableLogging: true
 });
-braze.automaticallyShowInAppMessages();
-
 braze.openSession()
+braze.automaticallyShowInAppMessages();
+braze.logCustomEvent("Testeo");
+
 
 function App() {
     const { user, setUser } = useContext(UserContext);
@@ -74,7 +75,6 @@ function App() {
                 onClick={() => {
                     setTest(test + 100)
                     console.log(test)
-                    braze.logCustomEvent("Testeo");
                 }}
                 type="primary"
                 className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
