@@ -52,7 +52,6 @@ function App() {
     const [test, setTest] = useState(100);
 
     useEffect(() => {
-        braze.logCustomEvent("Testeo");
         fetch(`https://api.bluelytics.com.ar/v2/latest`)
             .then((res) => res.json())
             .then((data) => setUsd(data.blue.value_avg));
@@ -75,6 +74,7 @@ function App() {
                 onClick={() => {
                     setTest(test + 100)
                     console.log(test)
+                    braze.logCustomEvent("Testeo");
                 }}
                 type="primary"
                 className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
