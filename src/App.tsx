@@ -44,7 +44,7 @@ braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
 braze.openSession()
 braze.automaticallyShowInAppMessages();
 braze.logCustomEvent("Testeo")
-
+braze.changeUser(uuidv4());
 
 
 function App() {
@@ -60,7 +60,7 @@ function App() {
         fetch(`https://api.bluelytics.com.ar/v2/latest`)
             .then((res) => res.json())
             .then((data) => setUsd(data.blue.value_avg));
-            braze.changeUser(uuidv4());
+            
     }, []);
 
     return (
