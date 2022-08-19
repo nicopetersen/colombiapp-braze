@@ -35,17 +35,20 @@ import * as braze from "@braze/web-sdk";
 import { link } from "fs/promises";
 import { Navigate, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
-
+import * as amplitude from '@amplitude/analytics-browser'
 
 braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
     baseUrl: "sdk.iad-06.braze.com",
     enableLogging: true
 });
+
+const userId = uuidv4()
 braze.openSession()
 braze.automaticallyShowInAppMessages();
 braze.logCustomEvent("Testeo")
-braze.changeUser(uuidv4());
-
+braze.changeUser(userId);
+amplitude.init("0c55bc7651042375bd60fa86cece2b3d", userId)
+amplitude.track('Button Clicked');
 
 function App() {
     const { user, setUser } = useContext(UserContext);
@@ -54,13 +57,13 @@ function App() {
     const [showData, setShowData] = useState(false);
     const [usd, setUsd] = useState(200);
     const [test, setTest] = useState(100);
-  
+
 
     useEffect(() => {
         fetch(`https://api.bluelytics.com.ar/v2/latest`)
             .then((res) => res.json())
             .then((data) => setUsd(data.blue.value_avg));
-            
+
     }, []);
 
     return (
@@ -79,7 +82,7 @@ function App() {
             <Button
                 onClick={() => {
                     setTest(test + 100)
-                    console.log(test)
+                    console.log(test)              
                 }}
                 type="primary"
                 className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"

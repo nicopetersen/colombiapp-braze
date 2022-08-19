@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@amplitude/analytics-browser": "^1.2.0",
         "@ant-design/icons": "^4.7.0",
         "@braze/web-sdk": "^4.2.1",
         "@immfly/flights-map": "^1.2.7",
