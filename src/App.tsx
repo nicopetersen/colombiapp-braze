@@ -48,7 +48,9 @@ braze.automaticallyShowInAppMessages();
 braze.logCustomEvent("Testeo")
 braze.changeUser(userId);
 amplitude.init("0c55bc7651042375bd60fa86cece2b3d", userId)
-amplitude.track('Button Clicked');
+amplitude.track('Click test', {
+    userID: userId,
+});
 
 function App() {
     const { user, setUser } = useContext(UserContext);
