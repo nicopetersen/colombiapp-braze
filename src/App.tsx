@@ -34,7 +34,8 @@ import { auth, db } from "./services/firebase";
 import * as braze from "@braze/web-sdk";
 import { link } from "fs/promises";
 import { Navigate, useNavigate } from "react-router-dom";
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
+
 
 braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
     baseUrl: "sdk.iad-06.braze.com",
@@ -43,7 +44,7 @@ braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
 braze.openSession()
 braze.automaticallyShowInAppMessages();
 braze.logCustomEvent("Testeo")
-braze.changeUser(uuid())
+
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
         fetch(`https://api.bluelytics.com.ar/v2/latest`)
             .then((res) => res.json())
             .then((data) => setUsd(data.blue.value_avg));
+            braze.changeUser(uuidv4());
     }, []);
 
     return (
