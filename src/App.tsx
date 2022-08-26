@@ -46,8 +46,7 @@ const uid = uuidv4()
 const userId = uid
 braze.openSession()
 braze.automaticallyShowInAppMessages();
-braze.changeUser(userId);
-amplitude.init("0c55bc7651042375bd60fa86cece2b3d", userId)
+amplitude.init("0c55bc7651042375bd60fa86cece2b3d")
 
 
 function App() {
@@ -82,11 +81,11 @@ function App() {
             <Button
                 onClick={() => {
                     setTest(test + 100);
-                    console.log(test);  
+                    console.log(test);
                     braze.logCustomEvent("Testeo");
                     amplitude.track('Click test', {
                         userID: userId,
-                    });            
+                    });
                 }}
                 type="primary"
                 className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
@@ -96,6 +95,7 @@ function App() {
             <Map />
             <div className="p-4">
                 <Typography.Title level={3}>Mis pagos</Typography.Title>
+                
                 {user ? (
                     <div className="flex items-center">
                         <Button
@@ -107,6 +107,7 @@ function App() {
                         >
                             Registar un pago
                         </Button>
+
                         <Button
                             loading={loading}
                             onClick={async () => {
@@ -197,6 +198,9 @@ function App() {
                     <Button
                         className="w-full py-6 flex items-center justify-center rounded-md"
                         onClick={async () => {
+                            braze.changeUser(userId);
+                            amplitude.setUserId(userId);
+                            console.log(userId)
                             const googleProvider = new GoogleAuthProvider();
                             try {
                                 const res = await signInWithPopup(
