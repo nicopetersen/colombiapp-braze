@@ -42,15 +42,13 @@ braze.initialize("d3549196-70d5-4c23-8879-477edc26129c", {
     enableLogging: true
 });
 
-const userId = uuidv4()
+const uid = uuidv4()
+const userId = uid
 braze.openSession()
 braze.automaticallyShowInAppMessages();
-braze.logCustomEvent("Testeo")
 braze.changeUser(userId);
 amplitude.init("0c55bc7651042375bd60fa86cece2b3d", userId)
-amplitude.track('Click test', {
-    userID: userId,
-});
+
 
 function App() {
     const { user, setUser } = useContext(UserContext);
@@ -83,8 +81,12 @@ function App() {
             </Typography.Title>
             <Button
                 onClick={() => {
-                    setTest(test + 100)
-                    console.log(test)              
+                    setTest(test + 100);
+                    console.log(test);  
+                    braze.logCustomEvent("Testeo");
+                    amplitude.track('Click test', {
+                        userID: userId,
+                    });            
                 }}
                 type="primary"
                 className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
