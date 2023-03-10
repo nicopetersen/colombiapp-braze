@@ -86,6 +86,11 @@ function App() {
                     amplitude.track('Click test', {
                         userID: userId,
                     });
+                    const identifyEvent = new amplitude.Identify();
+                    const random = Math.random()*100000000000;
+                    identifyEvent.set('phone', random);
+                    amplitude.identify(identifyEvent)
+                  
                 }}
                 type="primary"
                 className="bg-primary-color border-primary-color text-black p-4 w-full mr-1 flex items-center justify-center rounded-md"
