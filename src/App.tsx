@@ -88,7 +88,7 @@ function App() {
                     });
                     const identifyEvent = new amplitude.Identify();
                     const random = Math.random()*100000000000;
-                    identifyEvent.set('phone', random);
+                    identifyEvent.set('phone-number', random);
                     amplitude.identify(identifyEvent)
                   
                 }}
