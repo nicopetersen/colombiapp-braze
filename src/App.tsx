@@ -66,9 +66,13 @@ function App() {
             .then((data) => setUsd(data.blue.value_avg));
 
     }, []);
+    braze.subscribeToFeatureFlagsUpdates(() => {
+        const newValue = braze.getFeatureFlag("testeo1").enabled;
+        setPromoEnabled(newValue);
+    });
     braze.logFeatureFlagImpression("testeo1");
+    setPromoEnabled
     if (promoEnabled) {
-        setPromoEnabled(true)
         return (
             <div className="pb-48">
                 <PageHeader
@@ -398,7 +402,6 @@ function App() {
             </div>
         );      
     } else {
-        setPromoEnabled(false)
         return (
             <div className="pb-48">
                 <PageHeader
