@@ -5,7 +5,7 @@
     "dependencies": {
         "@amplitude/analytics-browser": "^1.2.0",
         "@ant-design/icons": "^4.7.0",
-        "@braze/web-sdk": "^4.2.1",
+        "@braze/web-sdk": "^4.10.1",
         "@immfly/flights-map": "^1.2.7",
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.2.0",
@@ -20,7 +20,7 @@
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
         "react-router-dom": "^6.3.0",
-        "react-scripts": "5.0.1",
+        "react-scripts": "^3.0.1",
         "typescript": "^4.6.4",
         "uuid": "^8.3.2",
         "uuidv4": "^6.2.13",
