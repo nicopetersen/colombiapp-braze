@@ -50,6 +50,8 @@ amplitude.init("0c55bc7651042375bd60fa86cece2b3d")
 
 
 function App() {
+    const featureFlag = braze.getFeatureFlag("testeo1");
+    const [promoEnabled, setPromoEnabled] = useState(featureFlag.enabled);
     const { user, setUser } = useContext(UserContext);
     const [registerPayment, setRegisterPayment] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -64,9 +66,8 @@ function App() {
             .then((data) => setUsd(data.blue.value_avg));
 
     }, []);
-    const featureFlag = braze.getFeatureFlag("testeo1");
     braze.logFeatureFlagImpression("testeo1");
-    if (featureFlag?.enabled) {
+    if (promoEnabled) {
         return (
             <div className="pb-48">
                 <PageHeader
