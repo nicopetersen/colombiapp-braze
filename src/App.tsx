@@ -68,6 +68,7 @@ function App() {
     }, []);
     braze.logFeatureFlagImpression("testeo1");
     if (promoEnabled) {
+        setPromoEnabled(true)
         return (
             <div className="pb-48">
                 <PageHeader
@@ -397,6 +398,7 @@ function App() {
             </div>
         );      
     } else {
+        setPromoEnabled(false)
         return (
             <div className="pb-48">
                 <PageHeader
